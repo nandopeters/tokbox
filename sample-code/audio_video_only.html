@@ -8,9 +8,14 @@
 			display: inline-block;
 		}
 	</style>
-	<script src="http://static.opentok.com/v0.91/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="constants.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript" charset="utf-8">
+ 		<script src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../TBkeys.js" ></script>
+        <script type="text/javascript" charset="utf-8">
+        var apiKey = getTBapiKey(); 
+        var sessionId = getTBsessionId();
+        var token  = getTBtoken();
+        </script>
+       	<script type="text/javascript" charset="utf-8">
 
         var subscribers = {};
         var publisher;

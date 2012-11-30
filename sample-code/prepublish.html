@@ -4,11 +4,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>OpenTok Sample &#8212; Pre-publish set-up</title>
 	<link href="http://static.opentok.com/opentok/assets/css/demos.css" type="text/css" rel="stylesheet" >
-	<script src="http://static.opentok.com/v0.91/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
+       <script src="../TBkeys.js" ></script>
+       <script type="text/javascript" charset="utf-8">
+       var apiKey = getTBapiKey(); 
+       var sessionId = getTBsessionId();
+       var token  = getTBtoken();
+       </script>
 	<script type="text/javascript">
-		var apiKey = ""; // Replace with your API key. See https://dashboard.tokbox.com/projects
-		var sessionId = ''; // Replace with your own session ID. See https://dashboard.tokbox.com/projects 
-		var token = ''; // Replace with a generated token. See https://dashboard.tokbox.com/projects
 
 		var session;
 		var publisher;
