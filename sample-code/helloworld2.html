@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+        <title>OpenTok Simple Example</title>
+	
+	<script src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
+	
+
+	</script>
+		<link href="http://static.opentok.com/opentok/assets/css/demos.css" type="text/css" rel="stylesheet" >
+ 
+ 
+        <script type="text/javascript" charset="utf-8">
+        var apiKey = "1127"; 
+        var sessionId = "2_MX4xMTI3fn5XZWQgTm92IDI4IDE0OjAyOjE0IFBTVCAyMDEyfjAuODY4NTI3Mn4";
+        var token  = 'T1==cGFydG5lcl9pZD0xMTI3JnNpZz0wMGZmODA4ZjZmNTc0Y2RiMjAzNzg5MDdjMzljMDA2ZDRkMWViMjFkOnNlc3Npb25faWQ9Ml9NWDR4TVRJM2ZuNVhaV1FnVG05MklESTRJREUwT2pBeU9qRTBJRkJUVkNBeU1ERXlmakF1T0RZNE5USTNNbjQmY3JlYXRlX3RpbWU9MTM1NDE0MDEzOCZleHBpcmVfdGltZT0xMzU0MjI2NTM4JnJvbGU9cHVibGlzaGVyJm5vbmNlPTkyMDExMA==';
+        var publisher;
+        
+//			TB.addEventListener("exception", exceptionHandler);
+			var session = TB.initSession(sessionId); // Replace with your own session ID. See https://dashboard.tokbox.com/projects
+			session.addEventListener("sessionConnected", sessionConnectedHandler);
+			session.addEventListener("streamCreated", streamCreatedHandler);
+			session.connect(apiKey, token); // Replace with your API key and token. See https://dashboard.tokbox.com/projects
+			                                         // and https://dashboard.tokbox.com/projects
+
+			function sessionConnectedHandler(event) {
+				// subscribeToStreams(event.streams);
+				  publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
+				  session.publish(publisher);
+				  
+				 //session.publish();
+			}
+			
+			function streamCreatedHandler(event) {
+				subscribeToStreams(event.streams);
+			}
+			
+			function subscribeToStreams(streams) {
+				for (i = 0; i < streams.length; i++) {
+					var stream = streams[i];
+					if (stream.connection.connectionId == session.connection.connectionId) {
+						return;
+					}
+				    // Create the div to put the subscriber element in to
+				    var div = document.createElement('div');
+				    div.setAttribute('id', 'stream' + streams[i].streamId);
+				    document.body.appendChild(div);
+
+				    // Subscribe to the stream
+				    session.subscribe(streams[i], div.id);		
+				}
+			}
+			
+			function exceptionHandler(event) {
+				alert("Exception: " + event.code + "::" + event.message);
+			}
+			
+
+		</script>
+    </head>
+    <body>
+    <div id="myPublisherDiv"></div>
+    </body>
+</html>

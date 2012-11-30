@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script 
+		src="TBkeys.js" >
+	</script>
+	<script>
+function apiKey(){
+	var a = document.getElementById("apiKey");
+	a.innerHTML = getTBapiKey();
+}
+
+function token(){
+	var a = document.getElementById("token");
+	a.innerHTML = getTBtoken();
+}
+
+function sessionId(){
+	var a = document.getElementById("sessionId");
+	a.innerHTML = getTBsessionId();
+}
+
+
+	</script>
+</head>
+<body>
+    <div id="apiKey"></div>
+    <div id="token"></div>
+    <div id=sessionId></div>
+
+    <div>
+    qweqwe
+        <input id="apiKey" type="button" onclick="apiKey();" value="apiKey">
+        <input id="token" type="button" onclick="token();" value="token">
+        <input id="sessionId" type="button" onclick="sessionId();" value="sessionId">
+    </div>
+</body>
+</html>

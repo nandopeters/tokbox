@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+
+	<script 
+		src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js" >
+	</script>
+	
+	<script>
+	var	session;
+	
+	function startVideo(){
+		var sessionID = "1_MX4xMTI3fn5UaHUgTm92IDI5IDE1OjAzOjM0IFBTVCAyMDEyfjAuOTM2MjgwOTd-";
+		//var sessionID = "2_MX4xMTI3fn5XZWQgTm92IDI4IDE0OjAyOjE0IFBTVCAyMDEyfjAuODY4NTI3Mn4";
+		session = TB.initSession(sessionID);
+		var	apiKey = '1127';
+		//var token  = 'T1==cGFydG5lcl9pZD0xMTI3JnNpZz0wMGZmODA4ZjZmNTc0Y2RiMjAzNzg5MDdjMzljMDA2ZDRkMWViMjFkOnNlc3Npb25faWQ9Ml9NWDR4TVRJM2ZuNVhaV1FnVG05MklESTRJREUwT2pBeU9qRTBJRkJUVkNBeU1ERXlmakF1T0RZNE5USTNNbjQmY3JlYXRlX3RpbWU9MTM1NDE0MDEzOCZleHBpcmVfdGltZT0xMzU0MjI2NTM4JnJvbGU9cHVibGlzaGVyJm5vbmNlPTkyMDExMA==';
+		var token = "T1==cGFydG5lcl9pZD0xMTI3JnNpZz0yNjQxNDk2YTAyZmQ3YzVlZjViNzQxZTFkYTQ2ZTI1ZGUwNjgyMGY5OnNlc3Npb25faWQ9MV9NWDR4TVRJM2ZuNVVhSFVnVG05MklESTVJREUxT2pBek9qTTBJRkJUVkNBeU1ERXlmakF1T1RNMk1qZ3dPVGQtJmNyZWF0ZV90aW1lPTEzNTQyMzAyMTMmZXhwaXJlX3RpbWU9MTM1NDMxNjYxMyZyb2xlPXB1Ymxpc2hlciZub25jZT04NDI4NjE=";
+		
+		session.connect(apiKey, token);
+		
+		session.addEventListener("sessionConnected", sessionConnectedHandler);
+		session.addEventListener("streamCreated", streamCreatedHandler);
+	}
+	
+	function sessionConnectedHandler (event) {
+	     subscribeToStreams(event.streams);
+	     session.publish();
+	}
+
+	function subscribeToStreams(streams) {
+	    for (i = 0; i < streams.length; i++) {
+	        var stream = streams[i];
+	        if (stream.connection.connectionId != session.connection.connectionId) {
+	            session.subscribe(stream);
+	        }
+	    }
+	}
+	
+	function streamCreatedHandler(event) {
+	    subscribeToStreams(event.streams);
+	}
+	
+	
+	
+	</script>
+
+	
+
+	
+</head>
+<body >
+<div id1='1'>
+iTel Companies, Inc. (iTel™) is an early stage private healthcare IT company 
+(Delaware C-Corp) located in Scottsdale, Arizona, that links providers and patients 
+with proprietary technologies through a secure encrypted video-conferencing software 
+capability via its principal product, Secure-Health™ VIDEO, allowing the patient to 
+have a secure appointment from their home or office, or while traveling. It is unique 
+in that the technology brings consistent, real-time medical-grade diagnostic quality 
+video-conferencing (VTC) with the added Region of Interest (ROI) to patients & 
+clinicians, even via wireless, or an inexpensive single dial-up phone (POTS) line. 
+</div>
+<div id='video'>
+	<a href="#" onclick="startVideo();"> StartVideo </a>
+
+</div>
+
+<div id='id3'>
+iTel Companies, Inc. (iTel™) is an early stage private healthcare IT company 
+(Delaware C-Corp) located in Scottsdale, Arizona, that links providers and patients 
+with proprietary technologies through a secure encrypted video-conferencing software 
+capability via its principal product, Secure-Health™ VIDEO, allowing the patient to 
+have a secure appointment from their home or office, or while traveling. It is unique 
+in that the technology brings consistent, real-time medical-grade diagnostic quality 
+video-conferencing (VTC) with the added Region of Interest (ROI) to patients & 
+clinicians, even via wireless, or an inexpensive single dial-up phone (POTS) line. 
+
+</div>
+<!-- 
+	<a href="#" onclick="popit();"> Pop State </a>
+	<br>
+	<a href="#" onclick="goback();"> back </a>
+	<br>
+	<a href="#" onclick="goback2(-2);"> back2 </a>
+	<br>
+	<a href="#" onclick="goback2(-3);"> back3 </a>
+	<br>
+	<a href="#" onclick="currentState();"> current state </a>
+	<br>
+	<div id='urlId'></div>
+	<div id='push'></div>
+ -->
+</body>
+</html>

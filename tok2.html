@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+<!-- 
+	<script 
+		src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js"  >
+		 -->
+	<script src="TB.js">
+	</script>
+	
+<script>
+var session;
+var API_KEY = "1127"; 
+					// Replace with your API key. See https://dashboard.tokbox.com/projects
+var sessionId = "2_MX4xMTI3fn5XZWQgTm92IDI4IDE0OjAyOjE0IFBTVCAyMDEyfjAuODY4NTI3Mn4";
+					// Replace with your own session ID.
+                    // See https://dashboard.tokbox.com/projects
+//var token = ""; 
+				// Replace with a generated token that has been assigned the moderator role.
+                // See https://dashboard.tokbox.com/projects
+var token  = 'T1==cGFydG5lcl9pZD0xMTI3JnNpZz0wMGZmODA4ZjZmNTc0Y2RiMjAzNzg5MDdjMzljMDA2ZDRkMWViMjFkOnNlc3Npb25faWQ9Ml9NWDR4TVRJM2ZuNVhaV1FnVG05MklESTRJREUwT2pBeU9qRTBJRkJUVkNBeU1ERXlmakF1T0RZNE5USTNNbjQmY3JlYXRlX3RpbWU9MTM1NDE0MDEzOCZleHBpcmVfdGltZT0xMzU0MjI2NTM4JnJvbGU9cHVibGlzaGVyJm5vbmNlPTkyMDExMA==';
+            
+var publisher;
+var devicePanel;
+
+var session;
+
+function init() {
+	session = TB.initSession(sessionId);
+    session.addEventListener("sessionConnected", sessionConnectedHandler);
+    session.connect(API_KEY, token);
+}
+
+function sessionConnectedHandler(event) {
+    publishMe();
+    addDeviceManager();
+}
+
+function addDeviceManager() {
+    deviceManager = TB.initDeviceManager(API_KEY);
+    deviceManager.addEventListener("devicesDetected", devicesDetectedHandler);
+    deviceManager.detectDevices();
+}
+
+function devicesDetectedHandler(event) {
+    reportDevices(selectedCamera, selectedMicrophone);
+}
+
+function publishMe() {
+    var publisherContainer = document.getElementById("publisherContainer");
+    publisher = TB.initPublisher(API_KEY, publisherContainer.id);
+    session.publish(publisher);
+    publisher.addEventListener("settingsButtonClick", settingsButtonClickHandler);
+}
+
+function settingsButtonClickHandler() {
+    var newDiv = document.createElement("div");
+    newDiv.id = "devicePanel";
+    document.getElementById("devicePanelContainer").appendChild(newDiv);
+    devicePanel = deviceManager.displayPanel("devicePanel", publisher);
+    devicePanel.addEventListener("devicesSelected", devicesSelectedHandler);
+    document.getElementById("closeButton").style.visibility = "visible";
+}
+
+function devicesSelectedHandler(event) {
+    reportDevices(event.camera, event.microphone);
+}
+
+function reportDevices(camera, mic) {
+    document.getElementById("cameraNameDiv").innerHTML = "Camera: " + camera.name;
+    document.getElementById("micNameDiv").innerHTML = "Microphone: " + mic.name;
+}
+
+function closePanel() {
+    deviceManager.removePanel(devicePanel);
+    document.getElementById("closeButton").style.visibility = "hidden";
+}
+</script>
+</head>
+ <body >
+ 
+  <div>
+  <input id="startbutton" type="button" onclick="init()" value="Start Video" >
+ </div>
+  
+  <div id='id1' style="float:left">
+  <table
+		style="text-align: left; width: 100px; background-color: rgb(51, 204, 255); height: 60px;"
+		title="Table 1" border="1" cellpadding="2" cellspacing="2">
+		<tbody>
+			<tr>
+				<td style="vertical-align: top;">A11<br>
+				</td>
+				<td style="vertical-align: top;">A12<br>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align: top;">A21<br>
+				</td>
+				<td style="vertical-align: top;">A22<br>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+  </div>
+
+  <div id='id2' >
+	  <table
+	style="text-align: left; width: 100px; background-color: rgb(51, 204, 255); height: 60px;"
+	title="Table " border="1" cellpadding="2" cellspacing="2">
+		<tbody>
+			<tr>
+				<td style="vertical-align: top;">A11<br>
+				</td>
+				<td style="vertical-align: top;">A12<br>
+				</td>
+			</tr>
+				<tr>
+				<td style="vertical-align: top;">A21<br>
+				</td>
+				<td style="vertical-align: top;">A22<br>
+			</td>
+			</tr>
+		</tbody>
+		</table>
+  </div>
+<br>
+<div id='videosection'>
+pipoipoiqwe
+    <div id="publisherContainer"></div>
+    <div id="cameraNameDiv"></div>
+    <div id="micNameDiv"></div>
+    <div id="devicePanelContainer"></div>
+    <div>
+asdassd
+    
+        <input id="closeButton" type="button" onclick="closePanel()" value="Close panel" >
+    </div>
+ </div>
+ <br>
+  <br><br>
+  <div id='id3' >
+	  <table
+	style="text-align: left; width: 100px; background-color: rgb(51, 104, 155); height: 60px;"
+	title="Table " border="1" cellpadding="2" cellspacing="2">
+		<tbody>
+			<tr>
+				<td style="vertical-align: top;">A11<br>
+				</td>
+				<td style="vertical-align: top;">A12<br>
+				</td>
+			</tr>
+				<tr>
+				<td style="vertical-align: top;">A21<br>
+				</td>
+				<td style="vertical-align: top;">A22<br>
+			</td>
+			</tr>
+		</tbody>
+		</table>
+  </div>
+ 
+</body>
+</html>
