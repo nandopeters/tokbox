@@ -3,27 +3,28 @@
 	<head>
         <title>OpenTok Simple Example</title>
 		<link href="http://static.opentok.com/opentok/assets/css/demos.css" type="text/css" rel="stylesheet" >
- 		<script src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../TBkeys.js" ></script>
+ 	<!-- 	<script src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js" type="text/javascript" charset="utf-8"></script>  -->
+ 	
+        <script src="./Opentok-PHP/TBkeys.js" ></script>
         <script type="text/javascript" charset="utf-8">
 
         var apiKey; 
         var sessionId;
         var token;
-        /*
+    
         $(document).ready(function () {
            session_token();
             
 	    });
-        */
+
        if(!TBisready())
     		   console.log("not ready");
         		
-       function doVideo() {
+       
         sessionId = getTBsessionId();
         token  = getTBtoken();
         apiKey = getTBapiKey(); 
-
+        function doVideo() {
 			TB.addEventListener("exception", exceptionHandler);
 			var session = TB.initSession(sessionId); // Replace with your own session ID. See https://dashboard.tokbox.com/projects
 			session.addEventListener("sessionConnected", sessionConnectedHandler);
