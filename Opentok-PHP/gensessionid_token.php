@@ -29,6 +29,7 @@ $arr['token'] = $token;
 $arr['sessionId'] = $sessionId;
 $arr['apiKey'] = '1127';
 	
+header("content-type: application/json"); 
 
 echo $_GET['callback']. '('. json_encode($arr) . ')';  
 
