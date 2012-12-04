@@ -2,35 +2,35 @@
 <html>
 	<head>
         <title>OpenTok Simple Example</title>
-		<link href="http://static.opentok.com/opentok/assets/css/demos.css" type="text/css" rel="stylesheet" >
- 	<!-- 	<script src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js" type="text/javascript" charset="utf-8"></script>  -->
- 	
+<!-- 		<link href="http://static.opentok.com/opentok/assets/css/demos.css" type="text/css" rel="stylesheet" >
+ --> 	
         <script src="./Opentok-PHP/TBkeys.js" ></script>
         <script type="text/javascript" charset="utf-8">
 
         var apiKey; 
         var sessionId;
         var token;
-    
+        var session;
+    /*
         $(document).ready(function () {
            session_token();
             
-	    });
-
        if(!TBisready())
     		   console.log("not ready");
         		
-       
         sessionId = getTBsessionId();
         token  = getTBtoken();
         apiKey = getTBapiKey(); 
+        
+	    });
+        */
         function doVideo() {
 			TB.addEventListener("exception", exceptionHandler);
-			var session = TB.initSession(sessionId); // Replace with your own session ID. See https://dashboard.tokbox.com/projects
+			session = TB.initSession(getTBsessionId()); // Replace with your own session ID. See https://dashboard.tokbox.com/projects
 			session.addEventListener("sessionConnected", sessionConnectedHandler);
 			session.addEventListener("streamCreated", streamCreatedHandler);
-			session.connect(apiKey, token); // Replace with your API key and token. See https://dashboard.tokbox.com/projects
-			                                         // and https://dashboard.tokbox.com/projects
+			session.connect(getTBapiKey(), getTBtoken()); 		// Replace with your API key and token. See https://dashboard.tokbox.com/projects
+			                                        // and https://dashboard.tokbox.com/projects
 
        }
 
@@ -56,22 +56,35 @@
 				alert("Exception: " + event.code + "::" + event.message);
 			}
 			
+			function apiKey(){
+				var a = document.getElementById("apiKey");
+				a.innerHTML = getTBapiKey();
+			}
+
+			function token(){
+				var a = document.getElementById("token");
+				a.innerHTML = getTBtoken();
+			}
+
+			function sessionId(){
+				var a = document.getElementById("sessionId");
+				a.innerHTML = getTBsessionId();
+			}			
 
 		</script>
     </head>
 <body>
-    <div id="apiKey"></div>
-    <div id="token"></div>
+    <div id='apiKey'></div>
+    <div id='token'></div>
     <div id='sessionId'></div>
     <div id='session_token'></div>
-
     <div>
-    qweqwe
+    	qweqwe
         <input id="apiKey" type="button" onclick="apiKey();" value="apiKey">
         <input id="token" type="button" onclick="token();" value="token">
         <input id="sessionId" type="button" onclick="sessionId();" value="sessionId">
-        <input id="session_token" type="button" onclick="session_token();" value="session_token">
-        <input id="test" type="button" onclick="test();" value="test">
+ 	    <input id="session_token" type="button" onclick="session_token();" value="session_token">
+	    <input id="test" type="button" onclick="doVideo();" value="start video">
     </div>
 </body>
 </html>

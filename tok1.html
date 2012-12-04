@@ -2,17 +2,21 @@
 <html>
  <head>
 
+	<!-- 
 	<script src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="TBkeys.js" ></script>
+	 -->
+	<script src="./Opentok-PHP/TBkeys.js" ></script>
 	<script type="text/javascript" charset="utf-8">
-		var apiKey = getTBapiKey(); 
-		var sessionId = getTBsessionId();
-		var token  = getTBtoken();
 	</script>
 	<script>
 	var	session;
 	
 	function startVideo(){
+		session_token();
+		var apiKey = getTBapiKey(); 
+		var sessionId = getTBsessionId();
+		var token  = getTBtoken();
+
 		var sessionID = sessionId;		
 		session = TB.initSession(sessionID);
 

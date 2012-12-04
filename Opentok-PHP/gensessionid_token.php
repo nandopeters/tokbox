@@ -29,8 +29,10 @@ $arr['token'] = $token;
 $arr['sessionId'] = $sessionId;
 $arr['apiKey'] = '1127';
 	
-header("content-type: application/json"); 
+// for cross-domain ajax calls use the two lnes below
+//header("content-type: application/json");  
+//echo $_GET['callback']. '('. json_encode($arr) . ')';  
 
-echo $_GET['callback']. '('. json_encode($arr) . ')';  
 
+echo json_encode($arr);
 ?>
