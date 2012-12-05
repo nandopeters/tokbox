@@ -10,6 +10,13 @@ function ccNotValid(){
 	$("#col2").load("templates/ccNotValid.html");
 }
 
+function email(){
+	$("#col2").load("templates/emailtmplt.html");
+}
+
+
+
+
 var apiKey; 
 var sessionId;
 var token;
@@ -27,7 +34,8 @@ function doVideo() {
 
 function sessionConnectedHandler(event) {
     var publisherContainer = document.getElementById("pos1");
-    publisher = TB.initPublisher(getTBapiKey(), publisherContainer.id);
+    var publisherProperties = {width: 200, height:200, name:"Bob's stream"};
+    publisher = TB.initPublisher(getTBapiKey(), publisherContainer.id, publisherProperties);
 		 
 		 session.publish(publisher);
 		 subscribeToStreams(event.streams);
