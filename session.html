@@ -3,8 +3,17 @@
 <title>Columns</title>
 <link type="text/css" rel="stylesheet" href="css/session.css">
 
+<!--  <script src="./Opentok-PHP/TBkeys.js" ></script>
+ -->
+ 
+<script src="TBkeys2.js" ></script>
 <script type="text/javascript" src="js/session.js"></script> 
-<script src="./Opentok-PHP/TBkeys.js" ></script>
+<script type="text/javascript">
+
+function useragent(){
+	console.log(getUseragent());
+}
+</script>
 
 </head>
 <body>
@@ -12,17 +21,21 @@
 <div class="wrapper">
 	<div class="header">
 
-	<input id="ccNotValid" type="button" onclick="ccNotValid();" value="ccNotValid">
-	<input id="email" type="button" onclick="email();" value="email">
-    <input id="session_token" type="button" onclick="session_token();" value="session_token">
-	<input id="startVideo" type="button" onclick="doVideo();" value="Start Video">
+	<input id="ccNotValid" 		type="button" onclick="ccNotValid();" 	value="ccNotValid">
+	<input id="email" 			type="button" onclick="email();" 		value="email">
+    <input id="session_token" 	type="button" onclick="session_token();" value="session_token">
+	<input id="publishStart"	type="button" onclick="publishStart();" 		value="publishStart">
+	<input id="publishEnd"		type="button" onclick="publishEnd();" 		value="publishEnd">
+	<input id="subscribeStart"	type="button" onclick="subscribeStart();" 		value="subscribeStart">
+	<input id="subscribeEnd"	type="button" onclick="subscribeEnd();" 		value="subscribeEnd">
+	<input id="useragent"	type="button" onclick="useragent();" 		value="useragent">
 	
 	</div>
 
    	<div class="col1" id='col1'>
 		<div> Column 1</div>
 		
-		<div id='pos1' style="height:200px; width:inherit; float: left; border-top:1px solid #000; border-bottom:1px solid #000;" >pos1</div>
+		<div id='pos1' style="height:200px; width:inherit; float: left; border-top:1px solid #000; border-bottom:1px solid #000;" ></div>
 		<div id='pos2' style="height:200px; width:inherit; float: left; border-top:1px solid #000; border-bottom:1px solid #000;" >pos2</div>
 		 
    	</div>
