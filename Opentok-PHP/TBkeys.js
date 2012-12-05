@@ -7,7 +7,8 @@
  *  	this means that the .html file that invokes this source file must contain the folder
  *  	Opentok-PHP directly below it.
  * 
- */document.write("<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>");
+ */
+document.write("<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>");
 document.write("<script type='text/javascript' src='http://static.opentok.com/webrtc/v2.0/js/TB.min.js'></script>'");
 
 var TBSessionParams;

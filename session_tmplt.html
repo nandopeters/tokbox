@@ -4,19 +4,44 @@
 <style type="text/css">
 .wrapper {
    width:800px;
+   height:600px;
    margin:0 auto;
+   border-left:1px solid #000;
+   border-right:1px solid #000;
+   border-top:1px solid #000;
+   border-bottom:1px solid #000;
+}
+
+.header {
+   width:inherit;
+   height:50px;
+   border-bottom: 1px solid #000;
+   }
+.footer {
+   clear:both;
+   width:inherit;
+   height:50px;
+   border-top: 1px solid #000;
+   }
+
+.toolCol {
+   width:50px;
+   height:inherit;
+   float:left;
+   border-right:1px solid #000;
+   background:#FF;
 }
 .col1 {
-   width:150px;
-   height:100%;
+   width:200px;
+   height:500px;
    float:left;
    border-right:1px solid #000;
    background:#FF;
 }
 .col2 {
    width:600px;
-   height:100%;
-   float:left;
+   height:400px;
+   
    background:#ff;
 }
 </style>
@@ -24,12 +49,25 @@
 <body>
 
 <div class="wrapper">
-   <div class="col1">
-       Column 1
-   </div>
-   <div class="col2">
+	<div class="header">
+	<input id="apiKey" type="button" onclick="apiKey();" value="apiKey">
+	<input id="apiKey" type="button" onclick="apiKey();" value="apiKey">
+	</div>
+
+   	<div class="col1">
+		<div> Column 1</div>
+		
+		<div style="height:150px; width:inherit; float: left; border-top:1px solid #000; border-bottom:1px solid #000;" id='pos1'>pos1</div>
+		<div style="height:150px; width:inherit; float: left; border-top:1px solid #000; border-bottom:1px solid #000;" id='pos1'>pos1</div>
+		 
+   	</div>
+   	<div class="col2">
        Column 2
-   </div>
+   	</div>
+   	
+	<div class="footer">
+	</div>
 </div>
+
 </body>
 </html>
