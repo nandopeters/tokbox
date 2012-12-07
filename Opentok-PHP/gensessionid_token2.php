@@ -22,6 +22,14 @@ $session = $apiObj->createSession(  );
 // Option 1: Call getSessionId()
 $sessionId = $session->getSessionId();
 
+$myFile = "sessionid.txt";
+$fh = fopen($myFile, 'w') or die("can't open file");
+$stringData = $sessionId;
+fwrite($fh, $stringData);
+
+fclose($fh);
+
+
 // After creating a session, call generateToken(). Require parameter: SessionId
 //$token = $apiObj->generateToken($sessionId);
 
