@@ -24,13 +24,15 @@
 */
 
 class API_Config { // Replace this value with your TokBox API Partner Key
-	const API_KEY = "11421872";
-
+	// const API_KEY = "11421872";
+	const API_KEY = "14191222";
+	
 	// Replace this value with your TokBox API Partner Secret
-	const API_SECRET = "296cebc2fc4104cd348016667ffa2a3909ec636f";
-
+	// const API_SECRET = "296cebc2fc4104cd348016667ffa2a3909ec636f";
+	const API_SECRET =  "8aea0889eac4fd49d48f07e06d7dc2ffa8405437";
+	
 	const API_SERVER = "https://api.opentok.com/hl";
-
+	
 }
 ?>
 
