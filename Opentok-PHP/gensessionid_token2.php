@@ -13,7 +13,6 @@ $apiObj = new OpenTokSDK( API_Config::API_KEY, API_Config::API_SECRET );
 //$session = $apiObj->createSession( $_SERVER["REMOTE_ADDR"] );
 $session = $apiObj->createSession(  );
 
-
 // Creating Simple Session object 
 // Enable p2p connections
 //$session = $apiObj->createSession( $_SERVER["REMOTE_ADDR"], array(SessionPropertyConstants::P2P_PREFERENCE=> "enabled") );
@@ -22,13 +21,11 @@ $session = $apiObj->createSession(  );
 // Option 1: Call getSessionId()
 $sessionId = $session->getSessionId();
 
-$myFile = "sessionid.txt";
-$fh = fopen($myFile, 'w') or die("can't open file");
-$stringData = $sessionId;
-fwrite($fh, $stringData);
+$fname = "sessionid.txt";
+file_put_contents($fname, $sessionId) or die("can't write file" . $fname);
 
-fclose($fh);
 
+return;
 
 // After creating a session, call generateToken(). Require parameter: SessionId
 //$token = $apiObj->generateToken($sessionId);

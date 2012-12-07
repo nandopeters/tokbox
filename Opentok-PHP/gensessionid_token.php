@@ -29,12 +29,14 @@ $sessionId = $session->getSessionId();
 //$token = $apiObj->generateToken($sessionId, RoleConstants::MODERATOR, time() + (5*24*60*60), "hello world!" );
 
 $arr =  array();
+$arr['apiKey'] = API_Config::API_KEY;
+
 //$arr['sessionId'] = $sessionId;
-$arr['sessionId'] = "2_MX4xNDE5MTIyMn5-VGh1IERlYyAwNiAxNToyMToxOCBQU1QgMjAxMn4wLjE4MzcxMzh-";
+$arr['sessionId'] =  file_get_contents("sessionid.txt") or die("can't read file");
 
 //$arr['token'] = $token;
 $arr['token'] = $apiObj->generateToken($arr['sessionId']);
-$arr['apiKey'] = API_Config::API_KEY;
+
 	
 // for cross-domain ajax calls use the two lnes below
 //header("content-type: application/json");  
