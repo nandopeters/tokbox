@@ -24,6 +24,7 @@ var session;
 var	publisher;
 
 function publishStart() {
+	session_token();
 	TB.addEventListener("exception", exceptionHandler);
 	session = TB.initSession(getTBsessionId()); // Replace with your own session ID. See https://dashboard.tokbox.com/projects
 	session.addEventListener("sessionConnected", sessionConnectedHandler);
@@ -37,8 +38,7 @@ function publishStart() {
 function sessionConnectedHandler(event) {
     var publisherContainer = document.getElementById("pos1");
     var publisherProperties = {width: 200, height:200, name:getUseragent()};
-    alert("PublisherContainer: "+ publisherContainer);
-    alert("publisherProperties: "+ publisherProperties);
+
     
     publisher = TB.initPublisher(getTBapiKey(), publisherContainer.id, publisherProperties);
 		 
