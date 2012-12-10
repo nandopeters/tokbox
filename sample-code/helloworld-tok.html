@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+        <title>OpenTok Simple Example</title>
+		<script src="http://static.opentok.com/v1.1/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
+		<link href="http://static.opentok.com/opentok/assets/css/demos.css" type="text/css" rel="stylesheet" >
+        <script type="text/javascript" charset="utf-8">
+			TB.addEventListener("exception", exceptionHandler);
+			var session = TB.initSession("2_MX4xNDE5MTIyMn5-TW9uIERlYyAxMCAxMzozOTo1NyBQU1QgMjAxMn4wLjgxNDI3Mjc2fg"); // Replace with your own session ID. See https://dashboard.tokbox.com/projects
+			session.addEventListener("sessionConnected", sessionConnectedHandler);
+			session.addEventListener("streamCreated", streamCreatedHandler);
+			session.connect("14191222", "T1==cGFydG5lcl9pZD0xNDE5MTIyMiZzaWc9YWNmOTkyOWEzZTE4M2M1NTRiMWQ3NTZkMzlkNWQ4YTA2N2JhODhmZDpzZXNzaW9uX2lkPTJfTVg0eE5ERTVNVEl5TW41LVRXOXVJRVJsWXlBeE1DQXhNem96T1RvMU55QlFVMVFnTWpBeE1uNHdMamd4TkRJM01qYzJmZyZjcmVhdGVfdGltZT0xMzU1MTc1NjU4JnJvbGU9cHVibGlzaGVyJm5vbmNlPTEzNTUxNzU2NTguNzg3MzYwNzQyNTY2Ng=="); // Replace with your API key and token. See https://dashboard.tokbox.com/projects
+			                                         // and https://dashboard.tokbox.com/projects
+
+			function sessionConnectedHandler(event) {
+				 subscribeToStreams(event.streams);
+				 session.publish();
+			}
+			
+			function streamCreatedHandler(event) {
+				subscribeToStreams(event.streams);
+			}
+			
+			function subscribeToStreams(streams) {
+				for (i = 0; i < streams.length; i++) {
+					var stream = streams[i];
+					if (stream.connection.connectionId != session.connection.connectionId) {
+						session.subscribe(stream);
+					}
+				}
+			}
+			
+			function exceptionHandler(event) {
+				alert("Exception: " + event.code + "::" + event.message);
+			}
+			
+
+		</script>
+    </head>
+    <body>
+    </body>
+</html>
