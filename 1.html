@@ -17,13 +17,20 @@ function sessionId(){
 	var a = document.getElementById("sessionId");
 	a.innerHTML = getTBsessionId();
 }
+
+var use_tokbox_api = true;
+
 function test(){
-	if (typeof qwe == 'undefined'){
-		console.log('qwe is NULL: ');
+	if (typeof use_tokbox_api == 'undefined'){
+		console.log('use web rtc api: ');
 	}
-	else{
-		console.log('qwe is not NUL: '+qwe);
+	else {
+		if (use_tokbox_api == true)
+			console.log('use Tokbox api');
+		else
+			console.log('use Web RTC api')		
 	}
+
 	var a = document.getElementById("sessionId");
 	a.innerHTML = 'ee11';
 }

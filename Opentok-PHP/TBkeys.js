@@ -9,7 +9,18 @@
  * 
  */
 document.write("<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>");
-document.write("<script type='text/javascript' src='http://static.opentok.com/webrtc/v2.0/js/TB.min.js'></script>'");
+
+if (typeof use_tokbox_api == 'undefined')
+	use_tokbox_api = false;
+
+
+if( use_tokbox_api ){
+	console.log("using tok box api");
+	document.write("<script src='http://static.opentok.com/v1.1/js/TB.min.js'></script>");
+}
+else
+	document.write("<script type='text/javascript' src='http://static.opentok.com/webrtc/v2.0/js/TB.min.js'></script>'");
+
 
 var TBSessionParams;
 var readyTB = false;
@@ -25,9 +36,6 @@ function session_token(){
         success: function (json) {
         	//TBSessionParams = jQuery.parseJSON(json);
         	TBSessionParams = json;
-        	readyTB = true;
-        	console.log('Success.  readyTB: '+ readyTB);
-
         },
         complete: function(e, XHR, options) {
         	if( ! XHR.status == 200){
@@ -60,7 +68,7 @@ function getTBtoken(){
 }
 
 function getTBapiKey(){
-	var apiKey = '1127';
+	//var apiKey = '1127';
 	return TBSessionParams.apiKey;
 
 }
