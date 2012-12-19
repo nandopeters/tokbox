@@ -10,11 +10,11 @@ $apiObj = new OpenTokSDK( API_Config::API_KEY, API_Config::API_SECRET );
 
 // Creating Simple Session object, passing IP address to determine closest production server
 // Passing IP address to determine closest production server
-//$session = $apiObj->createSession( $_SERVER["REMOTE_ADDR"] );
+//        e.g.   $session = $apiObj->createSession( $_SERVER["REMOTE_ADDR"] );
 $session = $apiObj->createSession(  );
 
-// Creating Simple Session object 
-// Enable p2p connections
+// Creating example for Simple Session object to enable p2p connections
+
 //$session = $apiObj->createSession( $_SERVER["REMOTE_ADDR"], array(SessionPropertyConstants::P2P_PREFERENCE=> "enabled") );
 
 // Getting sessionId from Sessions
