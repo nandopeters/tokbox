@@ -1,5 +1,5 @@
 .wrapper {
-   width:800px;
+   width:803px;
    height:600px;
    margin:0 auto;
    border-left:1px solid #000;
@@ -25,18 +25,18 @@
    height:inherit;
    float:left;
    border-right:1px solid #000;
-   background:#FF;
+   background:#FFFFFF;
 }
 .col1 {
    width:200px;
    height:500px;
    float:left;
    border-right:1px solid #000;
-   background:#FF;
+   background:#FFFFFF;
 }
 .col2 {
    width:600px;
-   height:400px;
-   
-   background:#ff;
+   height:500px;
+   float:left;
+   background:#ffffff;
 }

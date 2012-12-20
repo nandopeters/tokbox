@@ -78,7 +78,5 @@ $arr['apiKey'] = $myapiKey;
 $arr['sessionId'] = $sessionId;
 $arr['token_moderator'] = $apiObj->generateToken($sessionId, RoleConstants::MODERATOR, $dt, moderator );
 $arr['token_guest']		= $apiObj->generateToken($sessionId, RoleConstants::PUBLISHER, $dt, publisher );
-echo "<br>".strlen($arr['sessionId'])."<br>";
-echo "<br>".strlen($arr['token_guest'])."<br>";
 echo json_encode($arr);
 ?>
