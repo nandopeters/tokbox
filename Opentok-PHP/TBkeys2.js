@@ -8,6 +8,8 @@
  *  	Opentok-PHP directly below it.
  * 
  */
+
+//var use_tokbox_api = true;
 document.write("<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>");
 
 if (typeof use_tokbox_api == 'undefined')
@@ -44,6 +46,28 @@ function session_token(){
 
         }
     });
+}
+
+function session_token2(){
+console.log("session_token2");
+	var theUrl = "./Opentok-PHP/tokmaketoken2.php";
+	$.ajax({
+        async: false,
+        type: 'GET',
+        url: theUrl,
+       dataType: 'json',
+        success: function (json) {
+        	//TBSessionParams = jQuery.parseJSON(json);
+        	TBSessionParams = json;
+        },
+        complete: function(e, XHR, options) {
+        	if( ! XHR.status == 200){
+            	console.log(e);
+        	}
+
+        }
+    });
+	console.log(TBSessionParams);
 }
 
 

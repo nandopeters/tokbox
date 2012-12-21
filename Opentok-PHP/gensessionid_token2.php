@@ -3,6 +3,8 @@
 require_once './Opentok-PHP-SDK/API_Config.php';
 require_once './Opentok-PHP-SDK/OpenTokSDK.php';
 
+$arr =  array();
+
 // Creating an OpenTok Object
 
 
@@ -11,7 +13,7 @@ $apiObj = new OpenTokSDK( API_Config::API_KEY, API_Config::API_SECRET );
 // Creating Simple Session object, passing IP address to determine closest production server
 // Passing IP address to determine closest production server
 //        e.g.   $session = $apiObj->createSession( $_SERVER["REMOTE_ADDR"] );
-$session = $apiObj->createSession(  );
+$session = $apiObj->createSession( $_SERVER["REMOTE_ADDR"], array(SessionPropertyConstants::P2P_PREFERENCE=> "enabled") );
 
 // Creating example for Simple Session object to enable p2p connections
 
@@ -20,9 +22,10 @@ $session = $apiObj->createSession(  );
 // Getting sessionId from Sessions
 // Option 1: Call getSessionId()
 $sessionId = $session->getSessionId();
+$arr['sessionId'] = $sessionId;
 
 $fname = "sessionid.txt";
-file_put_contents($fname, $sessionId) or die("can't write file" . $fname);
+file_put_contents($fname, json_encode($arr)) or die("can't write file" . $fname);
 
 
 return;
@@ -33,9 +36,9 @@ return;
 // Giving the token a moderator role, expire time 5 days from now, and connectionData to pass to other users in the session
 //$token = $apiObj->generateToken($sessionId, RoleConstants::MODERATOR, time() + (5*24*60*60), "hello world!" );
 
-$arr =  array();
+
 //$arr['sessionId'] = $sessionId;
-$arr['sessionId'] = "2_MX4xNDE5MTIyMn5-VGh1IERlYyAwNiAxNToyMToxOCBQU1QgMjAxMn4wLjE4MzcxMzh-";
+//$arr['sessionId'] = "2_MX4xNDE5MTIyMn5-VGh1IERlYyAwNiAxNToyMToxOCBQU1QgMjAxMn4wLjE4MzcxMzh-";
 
 //$arr['token'] = $token;
 $arr['token'] = $apiObj->generateToken($arr['sessionId']);

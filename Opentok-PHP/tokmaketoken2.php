@@ -61,11 +61,19 @@ if (!isset($myapiKey))
 if (!isset($myapiSecret))	
 	$myapiSecret = API_Config::API_SECRET;
 	
+	
 if (isset($iOS)){
 	$myapiKey = $iOSapikey;
 	$myapiSecret = $iOSsecret;
 }
 
+
+	
+if (!isset($sessionId)){
+	$res = file_get_contents("sessionid.txt") or die("can't read file");
+	$res = json_decode($res, true);
+	$sessionId = $res['sessionId'];
+}
 
 // Creating an OpenTok Object
 
