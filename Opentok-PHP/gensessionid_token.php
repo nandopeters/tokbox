@@ -32,8 +32,10 @@ $arr =  array();
 $arr['apiKey'] = API_Config::API_KEY;
 
 //$arr['sessionId'] = $sessionId;
-$arr['sessionId'] =  file_get_contents("sessionid.txt") or die("can't read file");
+$sid =  file_get_contents("sessionid.txt") or die("can't read file");
+$ar2 =  json_decode($sid, true);
 
+ $arr['sessionId'] = $ar2['sessionId'];
 //$arr['token'] = $token;
 $arr['token'] = $apiObj->generateToken($arr['sessionId']);
 
